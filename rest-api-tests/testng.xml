@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="REST API Test Suite" parallel="methods" thread-count="3">
+    <test name="User API Tests">
+        <classes>
+            <class name="com.example.api.tests.UserAPITest"/>
+        </classes>
+    </test>
+    <test name="Group API Tests">
+        <classes>
+            <class name="com.example.api.tests.GroupAPITest"/>
+        </classes>
+    </test>
+    <test name="Message API Tests">
+        <classes>
+            <class name="com.example.api.tests.MessageAPITest"/>
+        </classes>
+    </test>
+</suite>

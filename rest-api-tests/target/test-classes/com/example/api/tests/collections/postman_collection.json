@@ -1,0 +1,1220 @@
+{
+	"info": {
+		"_postman_id": "4d2a5181-22dd-4c74-b97b-5133244ed866",
+		"name": "REST API basics: CRUD, test & variable Copy",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29669887",
+		"_collection_link": "https://crimson-robot-697309.postman.co/workspace/d038c76d-a9f2-4055-ae0a-0299916b9f27/collection/29669887-4d2a5181-22dd-4c74-b97b-5133244ed866?action=share&source=collection_link&creator=29669887"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create 1st User (admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fN\": \"FN1\",\n  \"lN\": \"LN1\",\n  \"gender\": 1,\n  \"ageBracket\": 30,\n  \"phone\": \"1212121556\",\n  \"email\": \"fn6.ln6@success.com\",\n  \"id\": \"a097c285-72b2-4b77-b612-e44a625acc0d\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users",
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Create 2nd User (member)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fN\": \"FN2\",\n  \"lN\": \"LN2\",\n  \"gender\": 1,\n  \"ageBracket\": 30,\n  \"phone\": \"2323232323\",\n  \"email\": \"fn2.ln2@example.com\",\n  \"id\": \"a097c285-72b2-4b77-b612-e44a757acc0d\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users",
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Create 3rd User (non member)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fN\": \"FN3\",\n  \"lN\": \"LN3\",\n  \"gender\": 1,\n  \"ageBracket\": 30,\n  \"phone\": \"3434343434\",\n  \"email\": \"fn3.ln3@example.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users",
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Create 4th User (member)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fN\": \"FN4\",\n  \"lN\": \"LN4\",\n  \"gender\": 1,\n  \"ageBracket\": 30,\n  \"phone\": \"4545454545\",\n  \"email\": \"fn4.ln4@example.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users",
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Create 5th User (member->admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fN\": \"FN5\",\n  \"lN\": \"LN5\",\n  \"gender\": 1,\n  \"ageBracket\": 30,\n  \"phone\": \"5656565656\",\n  \"email\": \"fn5.ln5@example.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users",
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Create 6th User (non member)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fN\": \"FN6\",\n  \"lN\": \"LN6\",\n  \"gender\": 1,\n  \"ageBracket\": 30,\n  \"phone\": \"6767676767\",\n  \"email\": \"fn6.ln6@example.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users",
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserByID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/users/a097c285-72b2-4b77-b612-e44a625acc0d",
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserByPhone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/users/2323232323",
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserByEmail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/users/fn3.ln3@example.com",
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Group",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test Group\",\n  \"color\": \"#FF0000\",\n  \"groupIcon\": \"https://example.com/group-icon.png\",\n  \"description\": \"A group for students to study together\",\n  \"id\":\"eaa035fa-c871-4bfc-82be-0debe9ea72c5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups?u=1212121212",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "1212121212"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test Group Updated\",\n  \"color\": \"#FF0000\",\n  \"groupIcon\": \"https://example.com/group-icon.png\",\n  \"description\": \"A group for students to study together\",\n  \"id\":\"eaa035fa-c871-4bfc-82be-0debe9ea72c5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5?u=1212121212",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "1212121212"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByAdmin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test Group Updated\",\n  \"color\": \"#FF0000\",\n  \"groupIcon\": \"https://example.com/group-icon.png\",\n  \"description\": \"A group for students to study together\",\n  \"id\":\"eaa035fa-c871-4bfc-82be-0debe9ea72c5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5?u=1212121212",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "1212121212"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddTwoMemberByAdmin",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"2323232323\", \"5656565656\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/addusers?u=1212121212",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"addusers"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "1212121212"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddOneMoreMemberByAdmin",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"4545454545\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/addusers?u=1212121212",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"addusers"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "1212121212"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddMemberByMember",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"3434343434\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/addusers?u=2323232323",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"addusers"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "2323232323"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddMemberByNonMember",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"6565656565\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/addusers?u=3434343434",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"addusers"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "3434343434"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByMember",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test Group Updated\",\n  \"color\": \"#FF0000\",\n  \"groupIcon\": \"https://example.com/group-icon.png\",\n  \"description\": \"A group for students to study together\",\n  \"id\":\"eaa035fa-c871-4bfc-82be-0debe9ea72c5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5?u=1212121212",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "1212121212"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByNonMember",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test Group Updated\",\n  \"color\": \"#FF0000\",\n  \"groupIcon\": \"https://example.com/group-icon.png\",\n  \"description\": \"A group for students to study together\",\n  \"id\":\"eaa035fa-c871-4bfc-82be-0debe9ea72c5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5?u=6767676767",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "6767676767"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveMemberByNonMember",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"2323232323\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/removeusers?u=6767676767",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"removeusers"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "6767676767"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveMemberByOtherMember",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"4545454545\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/removeusers?u=5656565656",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"removeusers"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "5656565656"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveMemberByMember(self)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"2323232323\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/removeusers?u=2323232323",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"removeusers"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "2323232323"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveMemberByAdmin",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"fn4.ln4@example.com\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/removeusers?u=1212121212",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"removeusers"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "1212121212"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GrantAdminRightsByMember",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"5656565656\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/makeadmin?u=fn2.ln2@example.com",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"makeadmin"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "fn2.ln2@example.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GrantAdminRightsByAdmin",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"5656565656\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/makeadmin?u=1212121212",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"makeadmin"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "1212121212"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RevokeAdminRightsByAdmin",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"1212121212\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5/revokeadmin?u=5656565656",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5",
+								"revokeadmin"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "5656565656"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "MessageByMember",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"text\",\n  \"content\": \"This is a sample group message.\",\n  \"sourceUser\": \"3d9b2f18-3447-478d-9955-16bc38ffc9cb\",\n  \"targetGroup\": \"eaa035fa-c871-4bfc-82be-0debe9ea72c5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/messages?u=3d9b2f18-3447-478d-9955-16bc38ffc9cb",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"messages"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "3d9b2f18-3447-478d-9955-16bc38ffc9cb"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MessageByAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"text\",\n  \"content\": \"This is a message from Admin\",\n  \"sourceUser\": \"3d9b2f18-3447-478d-9955-16bc38ffc9cb\",\n  \"targetGroup\": \"eaa035fa-c871-4bfc-82be-0debe9ea72c5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/messages?u=3d9b2f18-3447-478d-9955-16bc38ffc9cb",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"messages"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "3d9b2f18-3447-478d-9955-16bc38ffc9cb"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tear Down",
+			"item": [
+				{
+					"name": "Delete 1st User By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users/a097c285-72b2-4b77-b612-e44a625acc0d",
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete 2nd User By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users/a097c285-72b2-4b77-b612-e44a757acc0d",
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete 3rd User By Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users/fn3.ln3@example.com",
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete 4th User By Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users/fn4.ln4@example.com",
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete 5th User By Phone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users/5656565656",
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete 6th User By Phone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/users/6767676767",
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Group",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/groups/eaa035fa-c871-4bfc-82be-0debe9ea72c5?u=1212121212",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"eaa035fa-c871-4bfc-82be-0debe9ea72c5"
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "1212121212"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "IsAilve",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}",
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://9tupht8p68.execute-api.us-east-1.amazonaws.com"
+		}
+	]
+}
