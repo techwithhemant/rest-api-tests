@@ -2,6 +2,7 @@ package com.example.api.config;
 
 public class TestConfig {
     public static final String BASE_URI = "https://9tupht8p68.execute-api.us-east-1.amazonaws.com";
+    public static final boolean ENABLE_REQUEST_LOGGING = true;
     public static final String USERS_ENDPOINT = "/api/users";
     public static final String GROUPS_ENDPOINT = "/api/groups";
     public static final String MESSAGES_ENDPOINT = "/api/messages";
